@@ -28,6 +28,12 @@ jobs:
         run: npm test 
       - name: Test - e2e tests
         run: npx playwright test
+      - name: Fly.io - flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Deploy to fly.io
+        run: flyctl deploy --remote-only
+        env:
+            FLY_API_TOKEN: ${{secrets.FLY_API_TOKEN}}
     
 
 
