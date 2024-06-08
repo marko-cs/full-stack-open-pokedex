@@ -14,12 +14,18 @@ jobs:
           node-version: "16"
       - name: Install
         run: npm install  
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
       - name: Lint
         run: npm run eslint -- --fix
       - name: Build
         run: npm run build
       - name: Test
         run: npm test 
+      - name: Run Playwright tests
+        run: npx playwright test
     
 
 
