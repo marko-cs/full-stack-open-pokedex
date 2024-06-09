@@ -10,8 +10,6 @@ app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`)
 })
 
-// Just comment for testing 
-// One line more
 app.get('/health', (req, res) => {
   res.send('ok')
 })
