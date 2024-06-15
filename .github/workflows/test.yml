@@ -23,3 +23,22 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ join(toJson(github.event.commits.*.message), ' ') }}
         run: echo "$COMMIT_MESSAGES"
+      - name: success
+        uses: rjstone/discord-webhook-notify@v1
+        if: {{ success() }}
+        with: 
+            username: ${{ github.event.head_commit.committer.username }}
+            severity: info
+            description: "A new version deployed" 
+            details: ${{"A new version of application deployed by " + github.event.head_commit.committer.username}}
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: success
+        uses: rjstone/discord-webhook-notify@v1
+        if: !{{ success() }}
+        with: 
+            username: ${{ github.event.head_commit.committer.username }}
+            severity: error
+            description: "A build failed" 
+            details: ${{"Commit " github.event.head_commit.url + " by " + github.event.head_commit.committer.username + " broke the build"}}
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
