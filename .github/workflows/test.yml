@@ -30,7 +30,7 @@ jobs:
             username: ${{ github.event.head_commit.committer.username }}
             severity: info
             description: A new version deployed 
-            details: ${{"A new version of application deployed by "}}${{github.event.head_commit.committer.username}}
+            details: ${{A new version of application deployed by }}${{github.event.head_commit.committer.username}}
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: success
         uses: rjstone/discord-webhook-notify@v1
@@ -39,6 +39,6 @@ jobs:
             username: ${{ github.event.head_commit.committer.username }}
             severity: error
             description: A build failed
-            details: ${{"Commit " github.event.head_commit.url}}${{" by "}}${{github.event.head_commit.committer.username}}${{" broke the build"}}
+            details: ${{Commit }}${{github.event.head_commit.url}}${{ by }}${{github.event.head_commit.committer.username}}${{ broke the build }}
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
