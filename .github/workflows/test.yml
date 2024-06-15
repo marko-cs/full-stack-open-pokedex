@@ -36,7 +36,7 @@ jobs:
 
       - name: failure
         uses: rjstone/discord-webhook-notify@v1.0.4
-        if: success()
+        if: failure()
         with: 
             username: ${{ github.event.head_commit.committer.username }}
             severity: error
