@@ -87,3 +87,14 @@ Needed changes done and tested.
 
 ## 11.16 Skipping a commit for tagging and deployment
 
+Experiments done with [test.yml](.github/workflows/test.yml). Main [workflow pipeline.yml](.github/workflows/pipeline.yml) updated and config tested. 
+
+## 11.17 Adding protection to your main branch
+
+Needed rule set created into [Github](https://github.com/marko-cs/full-stack-open-pokedex/settings/rules).  
+
+## 11.18 Build success/failure notification action
+
+Task to do
+- build and test message itself using test flow
+- integrate message with discord 
