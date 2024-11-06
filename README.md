@@ -98,3 +98,20 @@ Needed rule set created into [Github](https://github.com/marko-cs/full-stack-ope
 Task to do
 - build and test message itself using test flow
 - integrate message with discord 
+
+## 11.19 Periodic health check
+
+Health check first tested with test flow and then added [to own file](.github/workflows/schedule_jobs.yml). Check contains also notification to Discord in case of failure. 
+
+## 11.20 Your own pipeline
+
+Tasks to do
+- Select app from previous sections 
+- Combine repos and test locally
+- Add health check url  
+- Configure and test Fly.io deployment
+- Configure pipeline and health check 
+- Test and verify
+- Invitations and other finalization tasks   
+
+## 11.21 Protect your main branch and ask for pull request
