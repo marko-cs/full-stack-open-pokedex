@@ -105,26 +105,20 @@ Health check first tested with test flow and then added [to own file](.github/wo
 
 ## 11.20 Your own pipeline
 
-Continues integration and deployment pipeline is implement under [mooc-sec-project-I](https://github.com/marko-cs/mooc-sec-project-I). Implemented CI/CD pipeline first lint code, then run some test and deploy that into fly.io if previous steps are run without errors. Notifications to Discord are not implement, event that can be easily copy from this repo.    
+Continues integration and deployment pipeline is implement under [mooc-sec-project-I](https://github.com/marko-cs/mooc-sec-project-I). Implemented CI/CD pipeline first lint code, then run some test and deploy that into fly.io if previous steps are run without errors. Notifications to Discord are implement also.    
 
 ## 11.21 Protect your main branch and ask for pull request
 
-Not possible with free Github account. Similar affect can be implement with workflow actions. 
+Not possible with free Github account and private repo. In public repo works fine.
 
-```
-name: Prevent Direct Pushes to Main
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  prevent-push:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Fail job to block push
-      run: |
-        echo "Direct pushes to main are not allowed."
-        exit 1
-
-```
+**Rules in both repos**
+- No by passes
+- Branch targeting criteria: main
+- Rules applied into workflow
+    - Restrict deletions
+    - Require a pull request before merging
+        - Required approvals: 1
+    - Require status checks to pass
+        - Require branches to be up-to-date before merging
+        - Status checks that are required: Lint and test at least
+    - Block force pushes
