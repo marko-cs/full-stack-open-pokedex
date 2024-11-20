@@ -105,13 +105,26 @@ Health check first tested with test flow and then added [to own file](.github/wo
 
 ## 11.20 Your own pipeline
 
-Tasks to do
-- Select app from previous sections 
-- Combine repos and test locally
-- Add health check url  
-- Configure and test Fly.io deployment
-- Configure pipeline and health check 
-- Test and verify
-- Invitations and other finalization tasks   
+Continues integration and deployment pipeline is implement under [mooc-sec-project-I](https://github.com/marko-cs/mooc-sec-project-I). Implemented CI/CD pipeline first lint code, then run some test and deploy that into fly.io if previous steps are run without errors. Notifications to Discord are not implement, event that can be easily copy from this repo.    
 
 ## 11.21 Protect your main branch and ask for pull request
+
+Not possible with free Github account. Similar affect can be implement with workflow actions. 
+
+```
+name: Prevent Direct Pushes to Main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  prevent-push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Fail job to block push
+      run: |
+        echo "Direct pushes to main are not allowed."
+        exit 1
+
+```
